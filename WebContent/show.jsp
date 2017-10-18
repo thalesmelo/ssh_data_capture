@@ -35,8 +35,8 @@
 						.each(function() {
 
 							$("#dataTable")
-									.append(
-											this
+									.append(this
+											
 													+ "<tr><td>"
 													+ this.detailId
 													+ "</td>"
