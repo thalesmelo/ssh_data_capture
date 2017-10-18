@@ -18,7 +18,6 @@ public class Label {
 
 	private String labelName;
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	public Integer getLabelId() {
