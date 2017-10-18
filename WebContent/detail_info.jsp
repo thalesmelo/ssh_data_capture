@@ -53,6 +53,7 @@
 
 					</c:forEach>
 				</ul>
+			
 			</td>
 		</tr>
 
