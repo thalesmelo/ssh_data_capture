@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import com.dataCapture.dao.DataCaptureDao;
 import com.dataCapture.pojo.Detail_info;
+import com.dataCapture.pojo.News;
 import com.dataCapture.service.DataCaptureService;
+import com.dataCapture.util.WebSiteConfig;
 
 /**
  * @author zhuCan
@@ -26,7 +28,7 @@ public class DataCaptureServiceImpl implements DataCaptureService{
 	private DataCaptureDao dao;
 	
 	@Override
-	public void save(Detail_info info) {
+	public void save(News info) {
 		// TODO Auto-generated method stub
 		dao.save(info);
 	}
@@ -35,7 +37,7 @@ public class DataCaptureServiceImpl implements DataCaptureService{
 	 * @see com.dataCapture.service.DataCaptureService#queryAll()
 	 */
 	@Override
-	public List<Detail_info> queryAll() {
+	public List<News> queryAll() {
 		// TODO Auto-generated method stub
 		return dao.query();
 	}
@@ -44,9 +46,30 @@ public class DataCaptureServiceImpl implements DataCaptureService{
 	 * @see com.dataCapture.service.DataCaptureService#queryById(java.lang.Integer)
 	 */
 	@Override
-	public Detail_info queryById(Class clazz,Integer id) {
+	public News queryById(Class clazz,Integer id) {
 		// TODO Auto-generated method stub
-		return (Detail_info) dao.queryById(clazz, id);
+		return (News) dao.queryById(clazz, id);
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dataCapture.service.DataCaptureService#deleteAll()
+	 */
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		dao.deleteAll();
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dataCapture.service.DataCaptureService#allByWebSite()
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<News> allByWebSite() {
+		// TODO Auto-generated method stub
+		String hql=" From News ";
+		
+		return dao.findByHql(hql);
 	}
 
 }

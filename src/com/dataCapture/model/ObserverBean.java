@@ -44,7 +44,7 @@ public class ObserverBean {
     private String thread_uuid;
     private double updated_at;
     private UserVoteBean user_vote;
-    private List<?> attachments;
+    private List<String> attachments;
 
     public AuthorBean getAuthor() {
         return author;
@@ -174,11 +174,11 @@ public class ObserverBean {
         this.user_vote = user_vote;
     }
 
-    public List<?> getAttachments() {
+    public List<String> getAttachments() {
         return attachments;
     }
 
-    public void setAttachments(List<?> attachments) {
+    public void setAttachments(List<String> attachments) {
         this.attachments = attachments;
     }
 

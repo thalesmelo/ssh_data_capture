@@ -1,7 +1,5 @@
 package com.dataCapture.pojo;
 
-import java.util.List;
-
 /**
  * @author zhuCan
  *
@@ -9,16 +7,37 @@ import java.util.List;
  *
  * @TIME  下午1:56:34
  */
+
 public class News_info {
 
+	private Integer Id;
 	private String authorName;
 	private String date;
-	private List<User_tag> tag;
+	
 	private String newsTitle;
 	private String imgUrl;
-	private List<Label> label;
+	
 	private String content;
 	private String url;
+	private String Teaser;
+	private String UUID;
+	
+	
+	
+	
+	/**
+	 * @return the id
+	 */
+	
+	public Integer getId() {
+		return Id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		Id = id;
+	}
 	/**
 	 * @return the url
 	 */
@@ -56,18 +75,7 @@ public class News_info {
 		this.date = date;
 	}
 
-	/**
-	 * @return the tag
-	 */
-	public List<User_tag> getTag() {
-		return tag;
-	}
-	/**
-	 * @param tag the tag to set
-	 */
-	public void setTag(List<User_tag> tag) {
-		this.tag = tag;
-	}
+
 	/**
 	 * @return the newsTitle
 	 */
@@ -95,15 +103,7 @@ public class News_info {
 	/**
 	 * @return the label
 	 */
-	public List<Label> getLabel() {
-		return label;
-	}
-	/**
-	 * @param label the label to set
-	 */
-	public void setLabel(List<Label> label) {
-		this.label = label;
-	}
+
 	/**
 	 * @return the content
 	 */
@@ -119,10 +119,43 @@ public class News_info {
 	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
+	
+	
+	/**
+	 * @return the teaser
+	 */
+	public String getTeaser() {
+		return Teaser;
+	}
+	/**
+	 * @param teaser the teaser to set
+	 */
+	public void setTeaser(String teaser) {
+		Teaser = teaser;
+	}
+	/**
+	 * @return the uUID
+	 */
+	public String getUUID() {
+		return UUID;
+	}
+	/**
+	 * @param uUID the uUID to set
+	 */
+	public void setUUID(String uUID) {
+		UUID = uUID;
+	}
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	@Override
 	public String toString() {
-		return "News_info [作者姓名=" + authorName + "\n 时间=" + date + "\n 作者标签=" + tag + "\n 新闻标题=" + newsTitle
-				+ "\n 图片url=" + imgUrl + "\n新闻小标签=" + label + "\n新闻内容=" + content +"\n详情地址URL"+url+ "]";
+		return "News_info [Id=" + Id + ", authorName=" + authorName + ", date=" + date + ", newsTitle=" + newsTitle
+				+ ", imgUrl=" + imgUrl + ", content=" + content + ", url=" + url + ", Teaser=" + Teaser + ", UUID="
+				+ UUID + "]";
 	}
 	
 	

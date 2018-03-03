@@ -1,6 +1,7 @@
 package com.dataCapture.dao;
 
 import com.dataCapture.pojo.Detail_info;
+import com.dataCapture.pojo.News;
 
 /**
  * @author zhuCan
@@ -9,6 +10,6 @@ import com.dataCapture.pojo.Detail_info;
  *
  * @TIME  上午11:20:29
  */
-public interface DataCaptureDao extends BaseDao<Detail_info>{
+public interface DataCaptureDao extends BaseDao<News>{
 
 }

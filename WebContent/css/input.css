@@ -8,7 +8,7 @@
 }
 
 .height {
-	height: 250px;
+	height: 350px;
 }
 
 h1 {
@@ -20,7 +20,10 @@ h1 {
 }
 
 .height1 {
-	height: 220px;
+	height: 320px;
+}
+.height3{
+	height: 480px;
 }
 
 .form {

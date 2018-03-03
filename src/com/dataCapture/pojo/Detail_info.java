@@ -1,16 +1,8 @@
 package com.dataCapture.pojo;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 
 /**
  * @author zhuCan
@@ -19,23 +11,113 @@ import javax.persistence.ManyToMany;
  *
  * @TIME 上午10:53:03
  */
-@Entity
+//@Entity
 public class Detail_info {
 
 	private Integer detailId;
 
 	private String author_url;
 	private String author_name;
-	private Set<User_tag> tags = new HashSet<>();
+	private String FeaturedImageUrl;
+	private String Teaser;
+	private String CreateUserId;
+	private String UUID;
+	private Boolean isLock;
+	private Boolean Feature;
+	private String tags ;
 	private String create_date;
 	private String title;
 	private String imageUrl;
-	private Set<Label> labels = new HashSet<>();
+	private String labels ;
 	private String content;
 	private String observer_size;
 	private String observer_url;
 
 	
+	/**
+	 * @return the featuredImageUrl
+	 */
+	public String getFeaturedImageUrl() {
+		return FeaturedImageUrl;
+	}
+
+	/**
+	 * @param featuredImageUrl the featuredImageUrl to set
+	 */
+	public void setFeaturedImageUrl(String featuredImageUrl) {
+		FeaturedImageUrl = featuredImageUrl;
+	}
+
+	/**
+	 * @return the teaser
+	 */
+	public String getTeaser() {
+		return Teaser;
+	}
+
+	/**
+	 * @param teaser the teaser to set
+	 */
+	public void setTeaser(String teaser) {
+		Teaser = teaser;
+	}
+
+	/**
+	 * @return the createUserId
+	 */
+	public String getCreateUserId() {
+		return CreateUserId;
+	}
+
+	/**
+	 * @param createUserId the createUserId to set
+	 */
+	public void setCreateUserId(String createUserId) {
+		CreateUserId = createUserId;
+	}
+
+	/**
+	 * @return the uUID
+	 */
+	public String getUUID() {
+		return UUID;
+	}
+
+	/**
+	 * @param uUID the uUID to set
+	 */
+	public void setUUID(String uUID) {
+		UUID = uUID;
+	}
+
+	/**
+	 * @return the isLock
+	 */
+	public Boolean getIsLock() {
+		return isLock;
+	}
+
+	/**
+	 * @param isLock the isLock to set
+	 */
+	public void setIsLock(Boolean isLock) {
+		this.isLock = isLock;
+	}
+
+	/**
+	 * @return the feature
+	 */
+	public Boolean getFeature() {
+		return Feature;
+	}
+
+	/**
+	 * @param feature the feature to set
+	 */
+	public void setFeature(Boolean feature) {
+		Feature = feature;
+	}
+
 	/**
 	 * @return the observer_size
 	 */
@@ -104,23 +186,22 @@ public class Detail_info {
 	/**
 	 * @return the labels
 	 */
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "d_l", joinColumns = { @JoinColumn(name = "d_id") }, // teacher表对的id,
-			inverseJoinColumns = { @JoinColumn(name = "l_id") })
-	public Set<Label> getLabels() {
+	//@ManyToMany(cascade = CascadeType.ALL)
+	//@JoinTable(name = "d_l", joinColumns = { @JoinColumn(name = "d_id") }, // teacher表对的id,
+	//		inverseJoinColumns = { @JoinColumn(name = "l_id") })
+	/*public Set<Label> getLabels() {
 		return labels;
-	}
+	}*/
 
 	/**
 	 * @return the tags
 	 */
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "d_t", joinColumns = { @JoinColumn(name = "d_id") }, // teacher表对的id,
-			inverseJoinColumns = { @JoinColumn(name = "t_id") })
-
-	public Set<User_tag> getTags() {
+	//@ManyToMany(cascade = CascadeType.ALL)
+//	@JoinTable(name = "d_t", joinColumns = { @JoinColumn(name = "d_id") }, // teacher表对的id,
+	//		inverseJoinColumns = { @JoinColumn(name = "t_id") })
+	/*public Set<User_tag> getTags() {
 		return tags;
-	}
+	}*/
 
 	/**
 	 * @return the title
@@ -185,18 +266,18 @@ public class Detail_info {
 	 * @param labels
 	 *            the labels to set
 	 */
-	public void setLabels(Set<Label> labels) {
+/*	public void setLabels(Set<Label> labels) {
 		this.labels = labels;
 	}
 
-	/**
+	*//**
 	 * @param tags
 	 *            the tags to set
-	 */
+	 *//*
 	public void setTags(Set<User_tag> tags) {
 		this.tags = tags;
 	}
-
+*/
 	/**
 	 * @param title
 	 *            the title to set
@@ -206,6 +287,34 @@ public class Detail_info {
 	}
 
 	
+	/**
+	 * @return the tags
+	 */
+	public String getTags() {
+		return tags;
+	}
+
+	/**
+	 * @param tags the tags to set
+	 */
+	public void setTags(String tags) {
+		this.tags = tags;
+	}
+
+	/**
+	 * @return the labels
+	 */
+	public String getLabels() {
+		return labels;
+	}
+
+	/**
+	 * @param labels the labels to set
+	 */
+	public void setLabels(String labels) {
+		this.labels = labels;
+	}
+
 	/**
 	 * @return the author_url
 	 */
@@ -225,10 +334,17 @@ public class Detail_info {
 	 */
 	@Override
 	public String toString() {
-		return "Detail_info [detailId=" + detailId + ", author_name=" + author_name + ", tags=" + tags
-				+ ", create_date=" + create_date + ", title=" + title + ", imageUrl=" + imageUrl + ", labels=" + labels
-				+ ", content=" + content + ", observer_size=" + observer_size + ", observer_url=" + observer_url + "]";
+		return "Detail_info [detailId=" + detailId + ", author_url=" + author_url + ", author_name=" + author_name
+				+ ", FeaturedImageUrl=" + FeaturedImageUrl + ", Teaser=" + Teaser + ", CreateUserId=" + CreateUserId
+				+ ", UUID=" + UUID + ", isLock=" + isLock + ", Feature=" + Feature + ", tags=" + tags + ", create_date="
+				+ create_date + ", title=" + title + ", imageUrl=" + imageUrl + ", labels=" + labels + ", content="
+				+ content + ", observer_size=" + observer_size + ", observer_url=" + observer_url + "]";
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	
 
 	/*
 	 * (non-Javadoc)

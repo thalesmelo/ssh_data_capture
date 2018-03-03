@@ -9,13 +9,33 @@ import javax.persistence.Column;
  *
  * @TIME 上午10:58:06
  */
-
+//@Entity
 public class Observer_info {
 
+	private Integer Id;
 	private String author_name;
 	private String commentTime;
 	private String comment;
 	private String iconUrl;
+	
+	
+	
+
+	/**
+	 * @return the id
+	 */
+	//@Id
+	//@GeneratedValue(strategy=GenerationType.SEQUENCE)
+	public Integer getId() {
+		return Id;
+	}
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(Integer id) {
+		Id = id;
+	}
 
 	/**
 	 * @return the author_name

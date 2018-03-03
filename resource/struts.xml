@@ -10,31 +10,83 @@
 	<constant name="struts.i18n.encoding" value="utf-8" />
 	<package name="default" namespace="/" extends="struts-default">
 
-		<action name="dataCapture_saveData" method="saveData"
-			class="com.dataCapture.action.DataCaptureAction">
-			<result>/show.jsp</result>
+		<action name="News" method="saveData" class="com.dataCapture.action.NewsAction">
+			<result>/choose.jsp</result>
 		</action>
 
-		<action name="queryById" method="queryById"
-			class="com.dataCapture.action.DataCaptureAction">
-			<result>/detail_info.jsp</result>
+		<action name="Training" method="training"
+			class="com.dataCapture.action.TrainingAction">
+			<result>/choose.jsp</result>
 		</action>
+
+		<action name="Forum" method="forum"
+			class="com.dataCapture.action.ForumsAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="Disscussion" method="disscussion"
+			class="com.dataCapture.action.DisscussionAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="Activity" method="activity"
+			class="com.dataCapture.action.ActivityAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="Photo" method="photo"
+			class="com.dataCapture.action.PhotosAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="User" method="user" class="com.dataCapture.action.UsersAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="UploadImg" method="uploadImg"
+			class="com.dataCapture.action.ImgAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="Login" method="login"
+			class="com.dataCapture.action.LoginAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="CopyDB" method="copyData"
+			class="com.dataCapture.action.CopyDBAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="Feed" method="feed"
+			class="com.dataCapture.action.ActivityFeedAction">
+			<result>/choose.jsp</result>
+		</action>
+
+		<action name="ActivityCount" method="actCount"
+			class="com.dataCapture.action.ActivityFeedAction">
+			<result>/choose.jsp</result>
+		</action>
+
+
+
 	</package>
 
 	<!-- 实时更新的ajax -->
 	<package name="upload" namespace="/" extends="json-default">
-		<action name="update" class="com.dataCapture.action.DataUpdateAction"
-			method="query">
+
+		<!-- <action name="update" class="com.dataCapture.action.DataUpdateAction" 
+			method="query"> <result name="success" type="json"></result> <result name="input">index.jsp</result> 
+			<interceptor-ref name="defaultStack"> <param name="fileUpload.maximumSize">3000000</param> 
+			ie会把 jpg、jpeg翻译成image/pjpeg，png翻译成image/x-png 。而火狐则很标准：jpg、jpeg翻译成image/jpeg，png翻译成image/png。 
+			<param name="fileUpload.allowedTypes"> image/bmp,image/jpeg,image/gif </param> 
+			</interceptor-ref> </action> -->
+
+		<action name="Progress" method="progress"
+			class="com.dataCapture.action.ProgressAction">
 			<result name="success" type="json"></result>
-			<result name="input">index.jsp</result>
-			<interceptor-ref name="defaultStack">
-				<param name="fileUpload.maximumSize">3000000</param>
-				<!-- ie会把 jpg、jpeg翻译成image/pjpeg，png翻译成image/x-png 。而火狐则很标准：jpg、jpeg翻译成image/jpeg，png翻译成image/png。 -->
-				<param name="fileUpload.allowedTypes">
-					image/bmp,image/jpeg,image/gif
-				</param>
-			</interceptor-ref>
 		</action>
+
 	</package>
 </struts>
  

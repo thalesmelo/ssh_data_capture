@@ -4,6 +4,7 @@ import org.springframework.stereotype.Component;
 
 import com.dataCapture.dao.DataCaptureDao;
 import com.dataCapture.pojo.Detail_info;
+import com.dataCapture.pojo.News;
 
 /**
  * @author zhuCan
@@ -13,7 +14,7 @@ import com.dataCapture.pojo.Detail_info;
  * @TIME  上午11:21:03
  */
 @Component
-public class DataCaptureDaoImpl extends BaseDaoImpl<Detail_info> implements DataCaptureDao{
+public class DataCaptureDaoImpl extends BaseDaoImpl<News> implements DataCaptureDao{
 
 
 

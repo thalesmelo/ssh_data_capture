@@ -57,6 +57,7 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		log.debug("saving" + instance + "instance");
 		try {
 			hibernateTemplate.save(instance);
+			
 			log.debug("ok");
 		} catch (RuntimeException exception) {
 			log.error(exception);
@@ -70,13 +71,21 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 	 * 
 	 * @see com.dataCapture.dao.BaseDao#query()
 	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public List<T> query() {
 		// TODO Auto-generated method stub
 
 		String hql = " FROM  " + entityClass;
-		Query query = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
-		return query.list();
+		try {
+			Query query = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
+			
+			return query.list();
+		} catch (RuntimeException e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return null;
 
 	}
 
@@ -91,10 +100,101 @@ public class BaseDaoImpl<T> implements BaseDao<T> {
 		// TODO Auto-generated method stub
 		try {
 			Object object = hibernateTemplate.get(clazz.getName(), id);
+			
 			return object;
 		} catch (RuntimeException exception) {
 			throw exception;
 		}
 	}
+
+	/* (non-Javadoc)
+	 * @see com.dataCapture.dao.BaseDao#update(java.lang.Object)
+	 */
+	@Override
+	public void update(T instance) {
+		log.debug("updating " + instance + " instance");
+		try {
+			hibernateTemplate.update(instance);
+		
+			log.debug("update successful");
+		} catch (RuntimeException re) {
+
+			log.error("update failed", re);
+			throw re;
+		}
+	}
+	/* (non-Javadoc)
+	 * @see com.dataCapture.dao.BaseDao#findByHql(java.lang.String)
+	 */
+	@Override
+	@SuppressWarnings("rawtypes")
+	public List findByHql(String hql) {
+		log.debug(hql);
+		try {
+			Query queryObject = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
+			return queryObject.list();
+		} catch (RuntimeException re) {
+			log.error("find by HQL ", re);
+			throw re;
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dataCapture.dao.BaseDao#queryByUUID(java.lang.String)
+	 */
+	@Override
+	public Object queryByUUID(String hql) {
+		// TODO Auto-generated method stub
+		log.debug(hql);
+		try {
+			Query queryObject = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
+			return queryObject.uniqueResult();
+		} catch (RuntimeException e) {
+			// TODO: handle exception
+			log.error("find by HQL ", e);
+			throw e;
+		}
+	
+		
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dataCapture.dao.BaseDao#deleteAll()
+	 */
+	@Override
+	public void deleteAll() {
+		// TODO Auto-generated method stub
+		String hql= "delete "+entityClass;
+		try{
+		int re=hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql).executeUpdate();
+		}catch(RuntimeException exception){
+			log.error("find by HQL ", exception);
+			throw exception;
+		}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dataCapture.dao.BaseDao#saveForCopy(java.lang.Object)
+	 */
+	@Override
+	public void saveForCopy(T instance) {
+		// TODO Auto-generated method stub
+				log.debug("saving" + instance + "instance");
+				try {
+					hibernateTemplate.save(instance);
+					hibernateTemplate.flush();
+					hibernateTemplate.clear();
+					log.debug("ok");
+				} catch (RuntimeException exception) {
+					log.error(exception);
+					throw exception;
+				}
+	}
+
+	/* (non-Javadoc)
+	 * @see com.dataCapture.dao.BaseDao#findbyHql(java.lang.String)
+	 */
+
+	
 
 }

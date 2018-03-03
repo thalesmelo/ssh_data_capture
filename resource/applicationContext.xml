@@ -13,7 +13,7 @@ http://www.springframework.org/schema/aop
 http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 ">
 	<!-- 引入db.properties文件 -->
-	<context:property-placeholder location="classpath:db.properties" />
+	<context:property-placeholder location="classpath:db2.properties" />
 	<!-- 配置spring的扫描器 -->
 	<context:component-scan base-package="com.dataCapture" />
 	<!-- 开启spring ioc的注解 -->
@@ -26,8 +26,8 @@ http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 		<property name="username" value="${jdbc_username}" />
 		<property name="password" value="${jdbc_pwd}" />
 		<!-- 数据源初始化自动创建10个连接 -->
-		<property name="initialSize" value="10" />
-		<property name="maxActive" value="20" />
+		<property name="initialSize" value="15" />
+		<property name="maxActive" value="30" />
 		<property name="minIdle" value="5" />
 	</bean>
 
@@ -39,7 +39,8 @@ http://www.springframework.org/schema/aop/spring-aop-4.2.xsd
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">
-					org.hibernate.dialect.OracleDialect
+				org.hibernate.dialect.SQLServer2008Dialect
+					<!-- org.hibernate.dialect.OracleDialect -->
 				</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.format_sql">true</prop>

@@ -3,6 +3,7 @@ package com.dataCapture.service;
 import java.util.List;
 
 import com.dataCapture.pojo.Detail_info;
+import com.dataCapture.pojo.News;
 
 /**
  * @author zhuCan
@@ -13,13 +14,17 @@ import com.dataCapture.pojo.Detail_info;
  */
 public interface DataCaptureService {
 
-	void save(Detail_info info);
+	void save(News info);
 
-	List<Detail_info> queryAll();
+	List<News> queryAll();
 
 	/**
 	 * @param id
 	 * @return
 	 */
-	Detail_info queryById(Class clazz, Integer id);
+	News queryById(Class clazz, Integer id);
+	
+	void deleteAll();
+	
+	List<News> allByWebSite();
 }

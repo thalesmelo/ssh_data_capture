@@ -1,4 +1,5 @@
 /applicationContext.xml
 /com/
 /db.properties
+/db2.properties
 /struts.xml

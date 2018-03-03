@@ -35,9 +35,8 @@
 						.each(function() {
 
 							$("#dataTable")
-									.append(this
-											
-													+ "<tr><td>"
+									.append(
+											"<tr><td>"
 													+ this.detailId
 													+ "</td>"
 													+ "<td>"
@@ -47,7 +46,9 @@
 													+ this.title
 													+ "</td>"
 													+ "<td><a href='"
-									+ this.imageUrl + "'>"
+									                + this.imageUrl
+									                
+									                + "'>"
 													+ this.imageUrl
 													+ "</td>"
 													+ "<td><a href='queryById?id="
@@ -60,7 +61,7 @@
 		$.ajax(obj);
 	}
 
-	var start = self.setInterval("update()", 1000);
+//	var start = self.setInterval("update()", 1000);
 </script>
 <body>
 
