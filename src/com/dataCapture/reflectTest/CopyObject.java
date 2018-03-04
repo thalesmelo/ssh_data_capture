@@ -20,7 +20,7 @@ public class CopyObject {
 		
 		@SuppressWarnings("unchecked")
 		Class<T> clazz=(Class<T>) t.getClass();
-		//获取类中的所有成员变量
+		//获取类中的所有成员变量 
 		Field[] fields=clazz.getDeclaredFields(); 
 		
 		for (Field field : fields) {

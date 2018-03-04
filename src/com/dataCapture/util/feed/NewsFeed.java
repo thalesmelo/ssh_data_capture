@@ -51,6 +51,9 @@ public class NewsFeed {
 					feed.setObjectName(info.getTitle());
 				
 					Users users=usersService.query(info.getCreateUserId());
+					if (users==null) {
+						continue;
+					}
 					feed.setSubjectId(users.getUUID());
 					feed.setSubjectType(14);
 					feed.setSubjectUserImgUrl(users.getHeaderImgUrl());

@@ -28,7 +28,7 @@ public class SaveAlbum {
 	public void saveAlbum(AlbumBean albumBean) {
 
 		Photos album = (Photos) CopyObject.copy(albumBean, new Photos());
-		 albumService.save(album);
+		albumService.save(album);
 		String tags = albumBean.getTag();
 		if (tags != null && !"".equals(tags)) {
 			String[] tagString = tags.split(",");
@@ -38,10 +38,10 @@ public class SaveAlbum {
 				tags2.setModuleId(albumBean.getUUID());
 				tags2.setName(tag);
 				tags2.setTagGype(1);
-			    tagService.save(tags2);
+				tagService.save(tags2);
 			}
 		}
-		
+
 		Progress.Progressing();
 
 	}
