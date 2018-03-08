@@ -71,7 +71,7 @@ public class AlbumBean {
     /// <summary>
     /// 1：Featured 1；2：Featured 2；3:Featured 3
     /// </summary>
-    private Integer Position ;
+    private Integer Position =0;
 
     private Integer WebsiteName =WebSiteConfig.WEB_SITE;
 

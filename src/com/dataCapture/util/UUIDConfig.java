@@ -139,7 +139,7 @@ public class UUIDConfig {
 					"activities/2/HTC elevate - #FridayFive: My Top 5 HTCs.html" },
 
 			{ "One's Gotta Go: Clarification + Submit ...", "f3291cb2-5a9d-4945-84e1-843d08febe85",
-					"activities/2/HTC elevate - One's Gotta Go: Clarification + Submit ..." } };
+					"activities/2/HTC elevate - One's Gotta Go_ Clarification + Submit Your Own.html" } };
 
 	// team的二维数组
 	public static String[][] Activities_info_team = {

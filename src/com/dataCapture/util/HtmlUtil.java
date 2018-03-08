@@ -146,7 +146,7 @@ public class HtmlUtil {
 
 	// 打开连接的io流,用来下载图片
 
-	public static String openStreamByUrl(String url, String Referer, WebModule module) {
+	public static String openStreamByUrl(String url, String Referer, WebModule module,String picPath) {
 
 		if (url == null || "".equals(url)) {
 			return null;
@@ -188,14 +188,7 @@ public class HtmlUtil {
 			e.printStackTrace();
 			Progress.error = true;
 		}
-		/*
-		 * Page page =null; try { page = client.getPage(url); } catch
-		 * (FailingHttpStatusCodeException | IOException e) { // TODO
-		 * Auto-generated catch block e.printStackTrace(); } InputStream
-		 * inputStream =null; try { inputStream =
-		 * page.getWebResponse().getContentAsStream(); } catch (IOException e) {
-		 * // TODO Auto-generated catch block e.printStackTrace(); return url; }
-		 */
+
 		byte[] bs = new byte[1024];
 		int len;
 
@@ -206,6 +199,10 @@ public class HtmlUtil {
 
 		String imgServerPath=imgPath(module);
 		String imgurl = imgFile.getPath() + "\\" + imgServerPath;
+		
+		if (picPath!=null&&!"".equals(picPath)) {
+			imgurl="D:\\htc_img_folder\\"+picPath.substring(WebSiteConfig.IMG_Server_Url.length())+"-icon";
+		}
 		OutputStream osOutputStream = null;
 		try {
 			osOutputStream = new FileOutputStream(imgurl);

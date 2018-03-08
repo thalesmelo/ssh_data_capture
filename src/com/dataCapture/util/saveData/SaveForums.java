@@ -106,14 +106,15 @@ public class SaveForums {
 					// 通过反射把bean转为pojo
 					Post post = (Post) CopyObject.copy(bean, new Post());
 					System.out.println(bean);
-					forumService.save(post);
 
 					// 存库actmodel
 					if (WebSiteConfig.WEB_MODULE == WebModule.ACTIVITY) {
 
-						saveActModel(post);
+						ActivityModel model=saveActModel(post);
+						post.setBody(model.getBody());
 					}
 
+					forumService.save(post);
 					Progress.Progressing();
 				}
 			}
@@ -227,30 +228,29 @@ public class SaveForums {
 	}
 
 	// 保存activity的post 分多种情况
-	public void saveActModel(Post post) {
+	public ActivityModel saveActModel(Post post) {
 		ActivityModel model = new ActivityModel();
 
 		// activityModel的参数
-		String dataJson = ActivityBean.getActModel(post);
-
-		// 图片的地址
-		String img = post.getImageUrl();
-		if (img != null && !"".equals(img)) {
-			String imgUUIDS = saveImg(post);
-			//model.setImageId(imgUUIDS);
-		}
-		model.setActivityUUID(post.getParentId());
-		model.setBody(post.getTitle());
+	    ActivityBean.getActModel(post,model);
+		
+		
+		model.setActivityUUID(post.getUUID());
+		
 		model.setCreateDateTime(post.getCreateDateTime());
-		model.setDataList(dataJson);
+	
 		model.setImage(post.getImageUrl());
 		model.setUserID(post.getCreateUserId());
-
+        model.setTag(post.getTag());
+		
 		activityModelService.save(model);
+		
+		
+		return model;
 	}
 
 	// 保存图片到相册 返回图片的uuids
-	public String saveImg(Post post) {
+	/*public String saveImg(Post post) {
 		
 		StringBuffer imgUUIDS=new StringBuffer();
 
@@ -277,5 +277,5 @@ public class SaveForums {
 		
 		return uuids;
 	}
-
+*/
 }

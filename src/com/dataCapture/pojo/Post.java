@@ -60,7 +60,7 @@ public class Post {
 	/// <summary>
 	/// 帖子标签
 	/// </summary>
-	// private String Tag ;
+    private String Tag ;
 	/// <summary>
 	/// 帖子状态(0-草稿,1-发布,2-结束，3-测试)
 	/// </summary>
@@ -408,4 +408,19 @@ public class Post {
 				+ CreateUserId + ", ModifyDate=" + ModifyDate + ", Feature=" + Feature + ", isLock=" + isLock + "]";
 	}
 
+	/**
+	 * @return the tag
+	 */
+	public String getTag() {
+		return Tag;
+	}
+
+	/**
+	 * @param tag the tag to set
+	 */
+	public void setTag(String tag) {
+		Tag = tag;
+	}
+
+	
 }

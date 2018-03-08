@@ -39,7 +39,7 @@ public class TitleUtil {
 	public static String[] Titles_champion = { "VIP Spotlight!", "Show Your HTC Community Spirit" };
 
 	// elevate
-	public static String[] titles_elevate = { "#FollowFriday, anyone?", "[Photo submission] What's giving you ...",
+	public static String[] titles_elevate = { "#FridayFive: My Top 5 HTCs","One's Gotta Go: Clarification + Submit ...","#FollowFriday, anyone?", "[Photo submission] What's giving you ...",
 			"HTC Elevate Premium Support" };
 	// team
     public static String [] titles_team={"Opening a new HTC smartphone box is ..."};	

@@ -18,6 +18,8 @@ public class PhotoBean {
 	private String replyUrl;
 
 	private Integer Id;
+	
+	private String iconUrl;
 
 	/// 唯一
 
@@ -311,6 +313,20 @@ public class PhotoBean {
 	}
 
 	/**
+	 * @return the iconUrl
+	 */
+	public String getIconUrl() {
+		return iconUrl;
+	}
+
+	/**
+	 * @param iconUrl the iconUrl to set
+	 */
+	public void setIconUrl(String iconUrl) {
+		this.iconUrl = iconUrl;
+	}
+
+	/**
 	 * @return the commonNum
 	 */
 	public Integer getCommonNum() {
@@ -340,4 +356,5 @@ public class PhotoBean {
 		ViewNum = viewNum;
 	}
 
+	
 }

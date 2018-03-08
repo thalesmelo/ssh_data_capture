@@ -161,6 +161,8 @@ public class Album_index {
 					bean.setCommonNum(Integer.parseInt(commonNum));
 				}
 
+				//获取相册photo的外面展示图地址
+				bean.setIconUrl(document.select("img.card-img").attr("src"));
 				// System.out.println(bean);
 				beans.add(bean);
 			}
@@ -202,6 +204,9 @@ public class Album_index {
 				if (commonNum != null && !"".equals(commonNum)) {
 					bean.setCommonNum(Integer.parseInt(commonNum));
 				}
+				
+				//获取相册photo的外面展示图地址
+				bean.setIconUrl(document.select("img.card-img").attr("src"));
 				beans.add(bean);
 			}
 
@@ -356,5 +361,8 @@ public class Album_index {
 			// 设置评论url
 			bean.setCommonUrl(UrlConfig.getObserverUrl(bean.getUUID(), "250"));
 		}
+		
+		//下载外面的图片
+		ImgUtil.upImg(bean.getIconUrl(), bean.getPhotoUrl(), WebModule.PHOTO, bean.getImg());
 	}
 }

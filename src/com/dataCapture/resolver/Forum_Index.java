@@ -170,13 +170,13 @@ public class Forum_Index {
 			break;
 		case 2:
 			body = document.select("div.card-block.activity-response>*:not(.featured-image-carousel)").toString();
-			bodyIndex = body.lastIndexOf("<ul");
+			bodyIndex = body.lastIndexOf("<ul class");
 			body = body.substring(0, bodyIndex > 0 ? bodyIndex : body.length());
-			body = body.replace("<h4 class=\"h4 \"> Share your photo here </h4>", "");
+			
 			break;
 		case 1:
 			body = document.select("div.card-block.activity-response>*").toString();
-			bodyIndex = body.lastIndexOf("<ul");
+			bodyIndex = body.lastIndexOf("<ul class");
 			body = body.substring(0, bodyIndex > 0 ? bodyIndex : body.length());
 		default:
 			break;

@@ -1,7 +1,5 @@
 package com.dataCapture.util.uploadImgData;
 
-import java.io.IOException;
-
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -9,7 +7,6 @@ import org.jsoup.select.Elements;
 
 import com.dataCapture.Enum.WebModule;
 import com.dataCapture.util.HtmlUtil;
-import com.dataCapture.util.Progress;
 import com.dataCapture.util.WebSiteConfig;
 
 /**
@@ -40,7 +37,7 @@ public class ImgUtil {
 			}
 			// 下载图片到本地 .并把新地址赋给img
 			String imgUrl = null;
-			imgUrl = HtmlUtil.openStreamByUrl(url, referer, module);
+			imgUrl = HtmlUtil.openStreamByUrl(url, referer, module ,null);
 			if (imgUrl != null && !"".equals(imgUrl)) {
 				element.attr("src", imgUrl);
 			}
@@ -60,7 +57,7 @@ public class ImgUtil {
 			String[] urlList = url.split(",");
 			StringBuffer sbBuffer = new StringBuffer();
 			for (String URL : urlList) {
-				sbBuffer.append(HtmlUtil.openStreamByUrl(URL, referer, module) + ",");
+				sbBuffer.append(HtmlUtil.openStreamByUrl(URL, referer, module,null) + ",");
 			}
 			String sbURL = sbBuffer.toString();
 			if (sbURL.length() > 0) {
@@ -71,7 +68,7 @@ public class ImgUtil {
 
 			// 单一图片
 			String imgUrl = null;
-			imgUrl = HtmlUtil.openStreamByUrl(url, referer, module);
+			imgUrl = HtmlUtil.openStreamByUrl(url, referer, module,null);
 
 			if (imgUrl != null && !"".equals(imgUrl)) {
 				return imgUrl;
@@ -80,5 +77,36 @@ public class ImgUtil {
 		}
 		return url;
 
+	}
+	//下载封面图片 附带 path参数
+	public static String upImg(String url, String referer,WebModule module,String path){
+		if (!WebSiteConfig.isUploadImg||url==null) {
+			return url;
+		}
+
+		// 当有多张图片的状况
+		if (url.indexOf(",") > 0) {
+			String[] urlList = url.split(",");
+			StringBuffer sbBuffer = new StringBuffer();
+			for (String URL : urlList) {
+				sbBuffer.append(HtmlUtil.openStreamByUrl(URL, referer, module,path) + ",");
+			}
+			String sbURL = sbBuffer.toString();
+			if (sbURL.length() > 0) {
+				sbURL = sbURL.substring(0, sbURL.length() - 1);
+				return sbURL;
+			}
+		} else {
+
+			// 单一图片
+			String imgUrl = null;
+			imgUrl = HtmlUtil.openStreamByUrl(url, referer, module,path);
+
+			if (imgUrl != null && !"".equals(imgUrl)) {
+				return imgUrl;
+			}
+			return url;
+		}
+		return url;
 	}
 }

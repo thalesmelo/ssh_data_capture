@@ -46,7 +46,7 @@ public class UploadUser {
 
 					if (user.getWebsiteName() == WebSiteConfig.WEB_SITE) {
 
-						String url = HtmlUtil.openStreamByUrl(user.getHeaderImgUrl(),"https://www.htcchampions.com/community",WebModule.USER);
+						String url = HtmlUtil.openStreamByUrl(user.getHeaderImgUrl(),"https://www.htcchampions.com/community",WebModule.USER,null);
 						System.out.println(url);
 
 					}

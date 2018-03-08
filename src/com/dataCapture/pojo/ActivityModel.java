@@ -264,6 +264,17 @@ public class ActivityModel {
 	public void setSliderid(String sliderid) {
 		this.sliderid = sliderid;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "ActivityModel [Id=" + Id + ", UUID=" + UUID + ", CreateDateTime=" + CreateDateTime + ", IsDeleted="
+				+ IsDeleted + ", ActivityUUID=" + ActivityUUID + ", Body=" + Body + ", Image=" + Image + ", ImageId="
+				+ ImageId + ", Checked=" + Checked + ", CheckedId=" + CheckedId + ", Tag=" + Tag + ", DataList="
+				+ DataList + ", UserID=" + UserID + ", Slider=" + Slider + ", sliderid=" + sliderid + "]";
+	}
 	
 	
 }
