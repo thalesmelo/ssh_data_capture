@@ -1,1 +1,6 @@
 /com/
+/applicationContext.xml
+/db.properties
+/db2.properties
+/db3.properties
+/struts.xml
