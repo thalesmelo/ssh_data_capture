@@ -214,22 +214,24 @@ public class Forum_Index {
 
 			// 帖子图片
 			Elements imgs = document
-					.select("article.container.main-content>div.row>section.submission-container.col-xs-12.col-sm-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2"
-							+ ">div.featured-container>div.featured-container-image>div>div>img");
-			StringBuffer sbBuffer = new StringBuffer();
-			for (Element img : imgs) {
-				sbBuffer.append(img.attr("src") + ",");
+					.select("ul.m-bottom-2.list-inline>li");
+			if (imgs!=null&&!imgs.isEmpty()) {
+				
+				StringBuffer sbBuffer = new StringBuffer();
+				for (Element img : imgs) {
+					sbBuffer.append(img.select("a>img").attr("src") + ",");
+				}
+				String imgString = sbBuffer.toString();
+				if (imgString != null && !("").equals(imgString)) {
+					imgString = imgString.substring(0, imgString.length() - 1);
+				}
+				bean.setImageUrl(imgString);
+				/*
+				 * 下载图片
+				 */
+				
+				bean.setImageUrl(ImgUtil.upImg(bean.getFeaturedImageUrl(), bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
 			}
-			String imgString = sbBuffer.toString();
-			if (imgString != null && !("").equals(imgString)) {
-				imgString = imgString.substring(0, imgString.length() - 1);
-			}
-			bean.setImageUrl(imgString);
-			/*
-			 * 下载图片
-			 */
-
-			bean.setImageUrl(ImgUtil.upImg(bean.getFeaturedImageUrl(), bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
 
 			// 帖子uuid
 			int index = html.indexOf("votingTargetId");
