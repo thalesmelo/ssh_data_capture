@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.dataCapture.util.WebSiteConfig;
+
 /**
  * @author zhuCan
  *
@@ -52,6 +54,24 @@ public class ActivityModel {
 	private String Slider;
 
 	private String sliderid;
+	
+	private Integer websitename=WebSiteConfig.WEB_SITE;
+	
+	
+
+	/**
+	 * @return the websitename
+	 */
+	public Integer getWebsitename() {
+		return websitename;
+	}
+
+	/**
+	 * @param websitename the websitename to set
+	 */
+	public void setWebsitename(Integer websitename) {
+		this.websitename = websitename;
+	}
 
 	/**
 	 * @return the id

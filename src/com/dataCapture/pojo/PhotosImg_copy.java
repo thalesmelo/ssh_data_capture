@@ -7,16 +7,18 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.dataCapture.util.WebSiteConfig;
+
 /**
  * @author zhuCan
  *
- * @DATE  2018年1月10日
+ * @DATE 2018年1月10日
  *
- * @TIME  上午10:19:55
+ * @TIME 上午10:19:55
  */
 @Entity
 public class PhotosImg_copy {
-	
+
 	private Integer Id;
 
 	/// 唯一
@@ -29,119 +31,127 @@ public class PhotosImg_copy {
 
 	/// 是否删除
 
-	private Boolean IsDeleted=false;
+	private Boolean IsDeleted = false;
 
-    /// <summary>
-    /// 主相册ID
-    /// </summary>
-    private String  Ids ;
+	/// <summary>
+	/// 主相册ID
+	/// </summary>
+	private String Ids;
 
+	/// <summary>
+	/// 相册标题
+	/// </summary>
+	private String Title;
 
-    /// <summary>
-    /// 相册标题
-    /// </summary>
-    private String Title ;
+	/// <summary>
+	/// url
+	/// </summary>
+	private String Img;
 
-    /// <summary>
-    /// url
-    /// </summary>
-    private String Img ;
+	/// <summary>
+	/// 相册内容
+	/// </summary>
+	private String Description;
 
-    /// <summary>
-    /// 相册内容
-    /// </summary>
-    private String Description ;
+	/// <summary>
+	/// 标记
+	/// </summary>
+	// private String Tags ;
 
-    /// <summary>
-    /// 标记
-    /// </summary>
-  //  private String Tags ;
+	/// <summary>
+	/// 0:不推荐为首图；1：推荐首图
+	/// </summary>
+	private Integer Type;
 
-    /// <summary>
-    ///0:不推荐为首图；1：推荐首图
-    /// </summary>
-    private Integer Type ;
-
-
-    /// <summary>
-    /// 创建用户ID
-    /// </summary>
-    private String Userid ;
+	/// <summary>
+	/// 创建用户ID
+	/// </summary>
+	private String Userid;
 	/**
 	 * @return the id
 	 */
-    private Integer LoveNum=0;
-  	private Integer ViewNum=0;
-  	private Integer CommonNum;
-  	
-  	
+	private Integer LoveNum = 0;
+	private Integer ViewNum = 0;
+	private Integer CommonNum;
 
+	private Integer websitename=WebSiteConfig.WEB_SITE;
 
-  	/**
-  	 * @return the loveNum
-  	 */
-  	public Integer getLoveNum() {
-  		return LoveNum;
-  	}
+	/**
+	 * @return the websitename
+	 */
+	public Integer getWebsitename() {
+		return websitename;
+	}
 
+	/**
+	 * @param websitename
+	 *            the websitename to set
+	 */
+	public void setWebsitename(Integer websitename) {
+		this.websitename = websitename;
+	}
 
-  	/**
-  	 * @param loveNum the loveNum to set
-  	 */
-  	public void setLoveNum(Integer loveNum) {
-  		LoveNum = loveNum;
-  	}
+	/**
+	 * @return the loveNum
+	 */
+	public Integer getLoveNum() {
+		return LoveNum;
+	}
 
+	/**
+	 * @param loveNum
+	 *            the loveNum to set
+	 */
+	public void setLoveNum(Integer loveNum) {
+		LoveNum = loveNum;
+	}
 
-  	/**
-  	 * @return the viewNum
-  	 */
-  	public Integer getViewNum() {
-  		return ViewNum;
-  	}
+	/**
+	 * @return the viewNum
+	 */
+	public Integer getViewNum() {
+		return ViewNum;
+	}
 
+	/**
+	 * @param viewNum
+	 *            the viewNum to set
+	 */
+	public void setViewNum(Integer viewNum) {
+		ViewNum = viewNum;
+	}
 
-  	/**
-  	 * @param viewNum the viewNum to set
-  	 */
-  	public void setViewNum(Integer viewNum) {
-  		ViewNum = viewNum;
-  	}
+	/**
+	 * @return the commonNum
+	 */
+	public Integer getCommonNum() {
+		return CommonNum;
+	}
 
-
-  	/**
-  	 * @return the commonNum
-  	 */
-  	public Integer getCommonNum() {
-  		return CommonNum;
-  	}
-
-
-  	/**
-  	 * @param commonNum the commonNum to set
-  	 */
-  	public void setCommonNum(Integer commonNum) {
-  		CommonNum = commonNum;
-  	}
-
+	/**
+	 * @param commonNum
+	 *            the commonNum to set
+	 */
+	public void setCommonNum(Integer commonNum) {
+		CommonNum = commonNum;
+	}
 
 	/**
 	 * @return the id
 	 */
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return Id;
 	}
 
-
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		Id = id;
 	}
-
 
 	/**
 	 * @return the uUID
@@ -150,14 +160,13 @@ public class PhotosImg_copy {
 		return UUID;
 	}
 
-
 	/**
-	 * @param uUID the uUID to set
+	 * @param uUID
+	 *            the uUID to set
 	 */
 	public void setUUID(String uUID) {
 		UUID = uUID;
 	}
-
 
 	/**
 	 * @return the createDateTime
@@ -166,14 +175,13 @@ public class PhotosImg_copy {
 		return CreateDateTime;
 	}
 
-
 	/**
-	 * @param createDateTime the createDateTime to set
+	 * @param createDateTime
+	 *            the createDateTime to set
 	 */
 	public void setCreateDateTime(Date createDateTime) {
 		CreateDateTime = createDateTime;
 	}
-
 
 	/**
 	 * @return the isDeleted
@@ -182,14 +190,13 @@ public class PhotosImg_copy {
 		return IsDeleted;
 	}
 
-
 	/**
-	 * @param isDeleted the isDeleted to set
+	 * @param isDeleted
+	 *            the isDeleted to set
 	 */
 	public void setIsDeleted(Boolean isDeleted) {
 		IsDeleted = isDeleted;
 	}
-
 
 	/**
 	 * @return the ids
@@ -198,14 +205,13 @@ public class PhotosImg_copy {
 		return Ids;
 	}
 
-
 	/**
-	 * @param ids the ids to set
+	 * @param ids
+	 *            the ids to set
 	 */
 	public void setIds(String ids) {
 		Ids = ids;
 	}
-
 
 	/**
 	 * @return the title
@@ -214,14 +220,13 @@ public class PhotosImg_copy {
 		return Title;
 	}
 
-
 	/**
-	 * @param title the title to set
+	 * @param title
+	 *            the title to set
 	 */
 	public void setTitle(String title) {
 		Title = title;
 	}
-
 
 	/**
 	 * @return the img
@@ -230,14 +235,13 @@ public class PhotosImg_copy {
 		return Img;
 	}
 
-
 	/**
-	 * @param img the img to set
+	 * @param img
+	 *            the img to set
 	 */
 	public void setImg(String img) {
 		Img = img;
 	}
-
 
 	/**
 	 * @return the description
@@ -246,17 +250,13 @@ public class PhotosImg_copy {
 		return Description;
 	}
 
-
 	/**
-	 * @param description the description to set
+	 * @param description
+	 *            the description to set
 	 */
 	public void setDescription(String description) {
 		Description = description;
 	}
-
-
-
-
 
 	/**
 	 * @return the type
@@ -265,14 +265,13 @@ public class PhotosImg_copy {
 		return Type;
 	}
 
-
 	/**
-	 * @param type the type to set
+	 * @param type
+	 *            the type to set
 	 */
 	public void setType(Integer type) {
 		Type = type;
 	}
-
 
 	/**
 	 * @return the userid
@@ -281,16 +280,17 @@ public class PhotosImg_copy {
 		return Userid;
 	}
 
-
 	/**
-	 * @param userid the userid to set
+	 * @param userid
+	 *            the userid to set
 	 */
 	public void setUserid(String userid) {
 		Userid = userid;
 	}
 
-
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
@@ -299,7 +299,5 @@ public class PhotosImg_copy {
 				+ IsDeleted + ", Ids=" + Ids + ", Title=" + Title + ", Img=" + Img + ", Description=" + Description
 				+ ", Type=" + Type + ", Userid=" + Userid + "]";
 	}
-	
-    
-    
+
 }

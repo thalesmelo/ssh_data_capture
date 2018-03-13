@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import com.dataCapture.util.WebSiteConfig;
+
 /**
  * @author zhuCan
  *
@@ -53,17 +55,35 @@ public class ActivityModel_copy {
 
 	private String sliderid;
 
+	private Integer websitename=WebSiteConfig.WEB_SITE;
+
+	/**
+	 * @return the websitename
+	 */
+	public Integer getWebsitename() {
+		return websitename;
+	}
+
+	/**
+	 * @param websitename
+	 *            the websitename to set
+	 */
+	public void setWebsitename(Integer websitename) {
+		this.websitename = websitename;
+	}
+
 	/**
 	 * @return the id
 	 */
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer getId() {
 		return Id;
 	}
 
 	/**
-	 * @param id the id to set
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(Integer id) {
 		Id = id;
@@ -77,7 +97,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param uUID the uUID to set
+	 * @param uUID
+	 *            the uUID to set
 	 */
 	public void setUUID(String uUID) {
 		UUID = uUID;
@@ -91,7 +112,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param createDateTime the createDateTime to set
+	 * @param createDateTime
+	 *            the createDateTime to set
 	 */
 	public void setCreateDateTime(Date createDateTime) {
 		CreateDateTime = createDateTime;
@@ -105,7 +127,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param isDeleted the isDeleted to set
+	 * @param isDeleted
+	 *            the isDeleted to set
 	 */
 	public void setIsDeleted(Boolean isDeleted) {
 		IsDeleted = isDeleted;
@@ -119,7 +142,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param activityUUID the activityUUID to set
+	 * @param activityUUID
+	 *            the activityUUID to set
 	 */
 	public void setActivityUUID(String activityUUID) {
 		ActivityUUID = activityUUID;
@@ -133,7 +157,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param body the body to set
+	 * @param body
+	 *            the body to set
 	 */
 	public void setBody(String body) {
 		Body = body;
@@ -147,7 +172,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param image the image to set
+	 * @param image
+	 *            the image to set
 	 */
 	public void setImage(String image) {
 		Image = image;
@@ -161,7 +187,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param imageId the imageId to set
+	 * @param imageId
+	 *            the imageId to set
 	 */
 	public void setImageId(String imageId) {
 		ImageId = imageId;
@@ -175,7 +202,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param checked the checked to set
+	 * @param checked
+	 *            the checked to set
 	 */
 	public void setChecked(String checked) {
 		Checked = checked;
@@ -189,7 +217,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param checkedId the checkedId to set
+	 * @param checkedId
+	 *            the checkedId to set
 	 */
 	public void setCheckedId(String checkedId) {
 		CheckedId = checkedId;
@@ -203,7 +232,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param tag the tag to set
+	 * @param tag
+	 *            the tag to set
 	 */
 	public void setTag(String tag) {
 		Tag = tag;
@@ -217,7 +247,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param dataList the dataList to set
+	 * @param dataList
+	 *            the dataList to set
 	 */
 	public void setDataList(String dataList) {
 		DataList = dataList;
@@ -231,7 +262,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param userID the userID to set
+	 * @param userID
+	 *            the userID to set
 	 */
 	public void setUserID(String userID) {
 		UserID = userID;
@@ -245,7 +277,8 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param slider the slider to set
+	 * @param slider
+	 *            the slider to set
 	 */
 	public void setSlider(String slider) {
 		Slider = slider;
@@ -259,11 +292,11 @@ public class ActivityModel_copy {
 	}
 
 	/**
-	 * @param sliderid the sliderid to set
+	 * @param sliderid
+	 *            the sliderid to set
 	 */
 	public void setSliderid(String sliderid) {
 		this.sliderid = sliderid;
 	}
-	
-	
+
 }

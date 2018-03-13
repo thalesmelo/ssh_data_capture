@@ -170,26 +170,22 @@ public class ActivityBean {
 
 	private static ActivityModel championActModel(Post post, ActivityModel model) {
 		List<String> param = getParam(post);
+		String json=null;
 		switch (post.getParentId()) {
+		// #FridayFive: My Top 5 HTCs
 		case "c8138e7b-3143-462d-9a2e-c48d091339b4":
-
-			return model;
+             json="";
+			break;
+		// Show Your HTC Community Spirit
 		case "44e1d8d1-acfe-47dc-893a-1f3be2aa5541":
 
-			return model;
-		case "3":
-
-			return model;
-		case "4":
-
-			return model;
-		case "5":
-
-			return model;
-
+			json="";
+			break;
 		default:
-			return model;
+			break;
 		}
+		
+		return model;
 	}
 
 	private static List<String> getParam(Post post) {

@@ -148,9 +148,9 @@ public class Album_index {
 				
 			
 					// like数量
-					likeNum = element.select("i.ss-icon.ss-gizmo.ss-heart").next("span").text();
+					likeNum = element.select("i.ss-icon.ss-gizmo.ss-heart").parents().get(0).text();
 					// 评论
-					commonNum = element.select("i.ss-icon.ss-gizmo.ss-chat").next("span").text();
+					commonNum = element.select("i.ss-icon.ss-gizmo.ss-chat").parents().get(0).text();
 
 				
 				

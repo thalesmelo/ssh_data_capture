@@ -136,6 +136,8 @@ public class CopyDBAction extends ActionSupport {
 			Progress.error = true;
 
 		}
+		
 		return true;
 	}
+	
 }

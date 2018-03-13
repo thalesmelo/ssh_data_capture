@@ -58,7 +58,7 @@ public class News_Index {
 			NewsBean info = new NewsBean();
 
 			// 获取图片的地址
-			String img = element.getElementsByClass("img-responsive m-bottom-2").get(0).attr("src");
+			String img = element.select("img.img-responsive.m-bottom-2").attr("src");
 			info.setFeaturedImageUrl(img);
 			if (WebSiteConfig.WEB_MODULE == WebModule.TRAINING) {
 				info.setFeaturedImageUrl(WebSiteConfig.Traning_Img_Url + img.substring(img.lastIndexOf("/") + 1));
@@ -84,6 +84,8 @@ public class News_Index {
 				int start1 = img.lastIndexOf("/");
 				info.setFeaturedImageUrl(
 						WebSiteConfig.COMMON_BODY_URL + url.substring(start, end) + img.substring(start1));
+				
+				info.setFeaturedImageUrl(ImgUtil.upImg(info.getFeaturedImageUrl(), referer, WebSiteConfig.WEB_MODULE));
 				info.setNewsUrl(url);
 			}
 

@@ -2,6 +2,8 @@ package com.dataCapture.bean;
 
 import java.util.Date;
 
+import com.dataCapture.util.WebSiteConfig;
+
 /**
  * @author zhuCan
  *
@@ -18,7 +20,7 @@ public class PhotoBean {
 	private String replyUrl;
 
 	private Integer Id;
-	
+
 	private String iconUrl;
 
 	/// 唯一
@@ -73,6 +75,23 @@ public class PhotoBean {
 	private Integer LoveNum = 0;
 	private Integer ViewNum = 0;
 	private Integer CommonNum = 0;
+
+	private Integer websitename=WebSiteConfig.WEB_SITE;
+
+	/**
+	 * @return the websitename
+	 */
+	public Integer getWebsitename() {
+		return websitename;
+	}
+
+	/**
+	 * @param websitename
+	 *            the websitename to set
+	 */
+	public void setWebsitename(Integer websitename) {
+		this.websitename = websitename;
+	}
 
 	/**
 	 * @return the photoUrl
@@ -320,7 +339,8 @@ public class PhotoBean {
 	}
 
 	/**
-	 * @param iconUrl the iconUrl to set
+	 * @param iconUrl
+	 *            the iconUrl to set
 	 */
 	public void setIconUrl(String iconUrl) {
 		this.iconUrl = iconUrl;
@@ -356,5 +376,4 @@ public class PhotoBean {
 		ViewNum = viewNum;
 	}
 
-	
 }

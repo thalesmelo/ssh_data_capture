@@ -71,47 +71,44 @@ public class Forum_Index {
 
 			// 查看次数
 			String viewNum = null;
-			String likeNum=null;
-			String commonNum=null;
+			String likeNum = null;
+			String commonNum = null;
 			switch (WebSiteConfig.WEB_SITE) {
 			case 3:
 				viewNum = item.select("i.ss-icon.ss-gizmo.ss-view").next("span").text();
 				// like数量
 				likeNum = item.select("i.ss-icon.ss-gizmo.ss-heart").next("span").text();
-				//评论
-				commonNum=item.select("i.ss-icon.ss-gizmo.ss-chat").next("span").text();
-				
+				// 评论
+				commonNum = item.select("i.ss-icon.ss-gizmo.ss-chat").next("span").text();
+
 				break;
 			case 2:
 				viewNum = item.select("i.ss-pika.ss-view").next("span").text();
 				// like数量
 				likeNum = item.select("i.ss-pika.ss-heart").next("span").text();
-				//评论
-				commonNum=item.select("i.ss-pika.ss-chat").next("span").text();
+				// 评论
+				commonNum = item.select("i.ss-pika.ss-chat").next("span").text();
 				break;
 			case 1:
 				viewNum = item.select("i.ss-pika.ss-view").next("span").text();
 				// like数量
 				likeNum = item.select("i.ss-pika.ss-heart").next("span").text();
-				//评论
-				commonNum=item.select("i.ss-pika.ss-chat").next("span").text();
-				
+				// 评论
+				commonNum = item.select("i.ss-pika.ss-chat").next("span").text();
+
 				break;
 			default:
 				break;
 			}
-			if (viewNum!=null&&!"".equals(viewNum)) {
+			if (viewNum != null && !"".equals(viewNum)) {
 				bean.setViewNum(Integer.parseInt(viewNum));
 			}
-			if (likeNum!=null&&!"".equals(likeNum)) {
+			if (likeNum != null && !"".equals(likeNum)) {
 				bean.setLoveNum(Integer.parseInt(likeNum));
 			}
-			if (commonNum!=null&&!"".equals(commonNum)) {
+			if (commonNum != null && !"".equals(commonNum)) {
 				bean.setCommonNum(Integer.parseInt(commonNum));
 			}
-
-
-		
 
 			forumBeans.add(bean);
 		}
@@ -163,16 +160,14 @@ public class Forum_Index {
 		int bodyIndex;
 		switch (WebSiteConfig.WEB_SITE) {
 		case 3:
-			body = document
-					.select("article.container.main-content>div.row>section.submission-container.col-xs-12.col-sm-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2"
-							+ ">section.submission-content.cms.m-bottom-2")
+			body = document.select("section.submission-content.cms.m-bottom-2>*:not(.m-bottom-2.img-responsive)")
 					.html();
 			break;
 		case 2:
 			body = document.select("div.card-block.activity-response>*:not(.featured-image-carousel)").toString();
 			bodyIndex = body.lastIndexOf("<ul class");
 			body = body.substring(0, bodyIndex > 0 ? bodyIndex : body.length());
-			
+
 			break;
 		case 1:
 			body = document.select("div.card-block.activity-response>*").toString();
@@ -212,11 +207,16 @@ public class Forum_Index {
 			}
 			bean.setTag(tagstring);
 
+			// feature图片
+			String featureImg = document.select(".m-bottom-2.img-responsive").attr("src");
+			if (featureImg != null && !featureImg.equals("")) {
+				bean.setFeaturedImageUrl(ImgUtil.upImg(featureImg, bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
+			}
+
 			// 帖子图片
-			Elements imgs = document
-					.select("ul.m-bottom-2.list-inline>li");
-			if (imgs!=null&&!imgs.isEmpty()) {
-				
+			Elements imgs = document.select("ul.m-bottom-2.list-inline>li");
+			if (imgs != null && !imgs.isEmpty()) {
+
 				StringBuffer sbBuffer = new StringBuffer();
 				for (Element img : imgs) {
 					sbBuffer.append(img.select("a>img").attr("src") + ",");
@@ -229,8 +229,9 @@ public class Forum_Index {
 				/*
 				 * 下载图片
 				 */
-				
-				bean.setImageUrl(ImgUtil.upImg(bean.getFeaturedImageUrl(), bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
+
+				bean.setImageUrl(
+						ImgUtil.upImg(bean.getFeaturedImageUrl(), bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
 			}
 
 			// 帖子uuid
