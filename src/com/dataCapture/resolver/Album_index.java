@@ -265,6 +265,7 @@ public class Album_index {
 						+ "section.submission-container.col-xs-12.col-sm-12.col-md-8.col-md-offset-2.col-lg-8.col-lg-offset-2>"
 						+ "section.submission-content.m-bottom-2.carousel-inner>" + "a.attachment-image>img:eq(0)")
 						.attr("src");
+				bean.setIconUrl(url.replace("-full.", "."));
 				bean.setImg(url);
 				break;
 			case 2:

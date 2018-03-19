@@ -1,8 +1,5 @@
 package com.dataCapture.action;
 
-import java.io.IOException;
-import java.security.GeneralSecurityException;
-
 import com.dataCapture.Enum.WebSite;
 import com.dataCapture.util.EnumUtil;
 import com.dataCapture.util.HtmlUtil;

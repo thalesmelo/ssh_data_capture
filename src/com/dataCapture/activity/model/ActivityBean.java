@@ -6,7 +6,6 @@ import java.util.List;
 import com.dataCapture.pojo.ActivityModel;
 import com.dataCapture.pojo.Post;
 import com.dataCapture.util.WebSiteConfig;
-import com.sun.jna.platform.win32.WinNT.ACCESS_ACEStructure;
 
 /**
  * @author zhuCan
@@ -170,21 +169,27 @@ public class ActivityBean {
 
 	private static ActivityModel championActModel(Post post, ActivityModel model) {
 		List<String> param = getParam(post);
-		String json=null;
+		String json = null;
 		switch (post.getParentId()) {
 		// #FridayFive: My Top 5 HTCs
 		case "c8138e7b-3143-462d-9a2e-c48d091339b4":
-             json="";
+			model.setBody(param.get(0));
+			json = "[{\"Title\":\"Submission Title\",\"Type\":\"3\",\"Template\":\"/Module/SingleSelect\",\"NodesContent\":{\"qes\":\"Name your list\",\"helpText\":\"\",\"require\":true,\"requireText\":\"This field is required.\",\"restrict\":true,\"minLength\":3,\"maxLength\":30,\"responseMessage\":\"Between 3-30.\"},\"HtmlId\":\"11\",\"UUID\":\"fe2752b7-6ec3-425b-9c36-4af076d95025\",\"nodesText\":\""
+					+ post.getTitle()
+					+ "\",\"nodesIndex\":1},{\"Title\":\"Description\",\"Type\":\"3\",\"Template\":\"/Module/Description\",\"NodesContent\":{\"qes\":\"Tell 'em your five.\",\"helpText\":\"\",\"require\":false,\"requireText\":\"This field is required.\",\"restrict\":true,\"minLength\":3,\"maxLength\":280,\"responseMessage\":\"Between 3-280 characters\",\"private\":false,\"hidePage\":false},\"HtmlId\":\"2\",\"UUID\":\"fe2752b7-6ec3-425b-9c36-4af076d95025\",\"nodesText\":\"\",\"nodesIndex\":2}]";
 			break;
 		// Show Your HTC Community Spirit
 		case "44e1d8d1-acfe-47dc-893a-1f3be2aa5541":
-
-			json="";
+			model.setBody(param.get(0));
+			model.setImageId(IMGuuid("eb7f289c-b245-43b7-9597-0b7affd2b3b4", post.getImageUrl()));
+			json = "[{\"Title\":\"Submission Title\",\"Type\":\"3\",\"Template\":\"/Module/SingleSelect\",\"NodesContent\":{\"qes\":\"Please give your photo a title.\",\"helpText\":\"\",\"require\":true,\"requireText\":\"This field is required.\",\"restrict\":false,\"minLength\":0,\"maxLength\":1000,\"responseMessage\":\"\"},\"HtmlId\":\"11\",\"UUID\":\"eb7f289c-b245-43b7-9597-0b7affd2b3b4\",\"nodesText\":\""
+					+ post.getTitle()
+					+ "\",\"nodesIndex\":1},{\"Title\":\"Description\",\"Type\":\"3\",\"Template\":\"/Module/Description\",\"NodesContent\":{\"qes\":\"Please tell us about your photo. Where did you take it, and what festival or event were you at? What makes this event special to you?\",\"helpText\":\"\",\"require\":true,\"requireText\":\"This field is required.\",\"restrict\":false,\"minLength\":0,\"maxLength\":1000,\"responseMessage\":\"\",\"private\":false,\"hidePage\":false},\"HtmlId\":\"2\",\"UUID\":\"eb7f289c-b245-43b7-9597-0b7affd2b3b4\",\"nodesText\":\"\",\"nodesIndex\":2},{\"Title\":\"Image Upload\",\"Type\":\"3\",\"Template\":\"/Module/PageInput\",\"NodesContent\":{\"qes\":\"Please upload your image(s) from your event.\",\"helpText\":\"\",\"require\":true,\"requireText\":\"Please upload a photo.\",\"private\":false,\"hidePage\":false},\"HtmlId\":\"5\",\"UUID\":\"eb7f289c-b245-43b7-9597-0b7affd2b3b4\",\"nodesText\":\"\",\"nodesIndex\":3}]";
 			break;
 		default:
 			break;
 		}
-		
+		model.setDataList(json);
 		return model;
 	}
 

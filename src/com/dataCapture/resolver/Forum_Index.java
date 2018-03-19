@@ -1,6 +1,10 @@
 package com.dataCapture.resolver;
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.jsoup.Jsoup;
@@ -50,6 +54,20 @@ public class Forum_Index {
 
 		WebSiteConfig.setTotalSize(li.size());
 		for (Element item : li) {
+			//新增数据,不抓之前的数据,判断时间跳出
+			Date postdate=(Date) DateUtil.parseDateByString(item.select("time.timeago").attr("datetime"));
+			Date now=null;
+			try {
+				now = new SimpleDateFormat("yyyy-MM-dd HH:mm:SS").parse("2018-03-01 03:02:00");
+			} catch (ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			if (postdate.compareTo(now)<0) {
+				break;
+			}
+			
+			
 			ForumBean bean = new ForumBean();
 
 			// 每个帖子的详情页面
@@ -161,7 +179,7 @@ public class Forum_Index {
 		switch (WebSiteConfig.WEB_SITE) {
 		case 3:
 			body = document.select("section.submission-content.cms.m-bottom-2>*:not(.m-bottom-2.img-responsive)")
-					.html();
+					.toString();
 			break;
 		case 2:
 			body = document.select("div.card-block.activity-response>*:not(.featured-image-carousel)").toString();
@@ -208,7 +226,7 @@ public class Forum_Index {
 			bean.setTag(tagstring);
 
 			// feature图片
-			String featureImg = document.select(".m-bottom-2.img-responsive").attr("src");
+			String featureImg = document.select("img.m-bottom-2.img-responsive").attr("src");
 			if (featureImg != null && !featureImg.equals("")) {
 				bean.setFeaturedImageUrl(ImgUtil.upImg(featureImg, bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
 			}
@@ -231,7 +249,7 @@ public class Forum_Index {
 				 */
 
 				bean.setImageUrl(
-						ImgUtil.upImg(bean.getFeaturedImageUrl(), bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
+						ImgUtil.upImg(bean.getImageUrl(), bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
 			}
 
 			// 帖子uuid
@@ -286,14 +304,14 @@ public class Forum_Index {
 			if (imgString != null && !("").equals(imgString)) {
 				imgString = imgString.substring(0, imgString.length() - 1);
 			}
-			bean.setImageUrl(imgString);
+			bean.setFeaturedImageUrl(imgString);
 			/*
 			 * 下载图片
 			 */
 
-			if (bean.getImageUrl() != null) {
+			if (bean.getFeaturedImageUrl() != null) {
 
-				bean.setImageUrl(ImgUtil.upImg(bean.getImageUrl(), bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
+				bean.setFeaturedImageUrl(ImgUtil.upImg(bean.getFeaturedImageUrl(), bean.getForumUrl(), WebSiteConfig.WEB_MODULE));
 			}
 
 			// 帖子uuid
